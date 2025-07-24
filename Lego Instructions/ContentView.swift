@@ -5,6 +5,7 @@
 //  Created by Karl Cridland on 09/07/2025.
 //
 
+import Foundation
 import SwiftUI
 import CoreData
 
@@ -47,7 +48,13 @@ struct ContentView: View {
                                 showEditor = true
                                 
                             }
-                            Button("Delete set", role: .destructive) {
+                            Button("Visit page") {
+                                if let id = legoSet.id,
+                                   let url = URL(string: "https://www.lego.com/en-gb/search?q=\(id)") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }
+                            Button("Delete", role: .destructive) {
                                 if (selectedSet == legoSet) {
                                     selectedSet = nil
                                 }
